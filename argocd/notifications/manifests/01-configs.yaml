@@ -81,5 +81,5 @@ data:
       send:
       - app-sync-succeeded
       when: app.status.operationState.phase in ['Succeeded']
-  service.telegram.kryukovbiz: |
+  service.telegram.newmoon22: |
     token: $telegram-token
