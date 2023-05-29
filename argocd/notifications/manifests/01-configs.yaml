@@ -7,27 +7,27 @@ data:
   context: |
     argocdUrl: https://cd.dev.monkeyuni.com
   template.app-created: |
-    message: Application {{.app.metadata.name}} has been created.
+    message: DEV - Application {{.app.metadata.name}} has been created.
   template.app-deleted: |
-    message: Application {{.app.metadata.name}} has been deleted.
+    message: DEV - Application {{.app.metadata.name}} has been deleted.
   template.app-deployed: |
     message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} is now running new version of deployments manifests.
+      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} DEV - Application {{.app.metadata.name}} is now running new version of deployments manifests.
   template.app-health-degraded: |
     message: |
-      {{if eq .serviceType "slack"}}:exclamation:{{end}} Application {{.app.metadata.name}} has degraded.
+      {{if eq .serviceType "slack"}}:exclamation:{{end}} DEV - Application {{.app.metadata.name}} has degraded.
       Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
   template.app-sync-failed: |
     message: |
-      {{if eq .serviceType "slack"}}:exclamation:{{end}}  The sync operation of application {{.app.metadata.name}} has failed at {{.app.status.operationState.finishedAt}} with the following error: {{.app.status.operationState.message}}
+      {{if eq .serviceType "slack"}}:exclamation:{{end}}  DEV - The sync operation of application {{.app.metadata.name}} has failed at {{.app.status.operationState.finishedAt}} with the following error: {{.app.status.operationState.message}}
       Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
   template.app-sync-running: |
     message: |
-      The sync operation of application {{.app.metadata.name}} has started at {{.app.status.operationState.startedAt}}.
+      DEV - The sync operation of application {{.app.metadata.name}} has started at {{.app.status.operationState.startedAt}}.
       Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
   template.app-sync-status-unknown: |
     message: |
-      {{if eq .serviceType "slack"}}:exclamation:{{end}} Application {{.app.metadata.name}} sync is 'Unknown'.
+      {{if eq .serviceType "slack"}}:exclamation:{{end}} DEV - Application {{.app.metadata.name}} sync is 'Unknown'.
       Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
       {{if ne .serviceType "slack"}}
       {{range $c := .app.status.conditions}}
@@ -36,7 +36,7 @@ data:
       {{end}}
   template.app-sync-succeeded: |
     message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} has been successfully synced at {{.app.status.operationState.finishedAt}}.
+      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} DEV - Application {{.app.metadata.name}} has been successfully synced at {{.app.status.operationState.finishedAt}}.
       Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
   trigger.on-created: |
     - description: Application is created.
