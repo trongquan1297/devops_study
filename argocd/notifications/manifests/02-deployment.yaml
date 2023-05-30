@@ -36,6 +36,9 @@ spec:
         image: argoprojlabs/argocd-notifications:v1.1.1
         imagePullPolicy: Always
         name: argocd-notifications-controller
+        env:
+          - name: TZ
+            value: Asia/Ho_Chi_Minh
         volumeMounts:
         - mountPath: /app/config/tls
           name: tls-certs
