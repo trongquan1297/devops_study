@@ -12,7 +12,7 @@ data:
     message: Application {{.app.metadata.name}} has been deleted.
   template.app-deployed: |
     message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} is now running new version of deployments manifests.
+      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} is now running [ {{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}} ]
   template.app-health-degraded: |
     message: |
       {{if eq .serviceType "slack"}}:exclamation:{{end}} Application {{.app.metadata.name}} has degraded.
@@ -36,7 +36,7 @@ data:
       {{end}}
   template.app-sync-succeeded: |
     message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} has been successfully synced at {{.app.status.operationState.finishedAt}}.
+      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} Application {{.app.metadata.name}} {{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}} has been successfully synced at {{ (call .time.Now).Local.Format "2006-01-02 15:04:05" }}.
       Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
   trigger.on-created: |
     - description: Application is created.
