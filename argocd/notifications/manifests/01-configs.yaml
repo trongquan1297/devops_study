@@ -12,7 +12,7 @@ data:
     message: AKS DEV - Application {{.app.metadata.name}} has been deleted.
   template.app-deployed: |
     message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} ✔ AKS DEV - Application {{.app.metadata.name}} is now running {{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}}.
+      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} 👍 AKS DEV - Application {{.app.metadata.name}} is now running {{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}}.
   template.app-health-degraded: |
     message: |
       {{if eq .serviceType "slack"}}:exclamation:{{end}} AKS DEV - Application {{.app.metadata.name}} has degraded.
@@ -36,7 +36,7 @@ data:
       {{end}}
   template.app-sync-succeeded: |
     message: |
-      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} ⚡ AKS DEV-{{.app.metadata.name}} {{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}} is syncing now at {{ (call .time.Now).Local.Format "2006-01-02 15:04:05" }}.
+      {{if eq .serviceType "slack"}}:white_check_mark:{{end}} ⌛ AKS DEV-{{.app.metadata.name}} {{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}} is syncing now at {{ (call .time.Now).Local.Format "2006-01-02 15:04:05" }}.
       Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
   trigger.on-created: |
     - description: Application is created.
